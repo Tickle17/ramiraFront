@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../../header/header";
-import { updateEditedItem, useSaveMenuDataMutation } from "./createMenuSlice";
+import { updateEditedItem } from "./createMenuSlice";
 import { useDispatch } from "react-redux";
 import { Grid } from "@mui/material";
 import PreviewNewItem from "./previewNewItem";
-
+import "./style.css";
+import { useSaveMenuDataMutation } from "../../../../shared/store/api/api";
 export default function CreateMenu() {
   const dispatch = useDispatch();
   const [editedItem, setEditedItem] = useState({
@@ -19,7 +20,7 @@ export default function CreateMenu() {
 
   const [access, setAccess] = useState(false);
 
-  const [saveMenuData] = useSaveMenuDataMutation();
+  const [saveMenuData, { data, error, isLoading }] = useSaveMenuDataMutation();
 
   useEffect(() => {
     const localToken = localStorage.getItem("token");
@@ -42,21 +43,30 @@ export default function CreateMenu() {
     e.preventDefault();
     try {
       const result = await saveMenuData(editedItem);
-      if (saveMenuData.isSuccess) {
+      console.log(result.data.message);
+      if (result.data.message === "completed") {
         alert("Данные успешно сохранены!");
         dispatch(updateEditedItem(result.data));
+        window.location.reload();
       }
     } catch (error) {
       console.error("Ошибка при сохранении данных:", error);
     }
   };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Такой товар уже есть или другая ошибка</div>;
+  }
   return (
     <div>
       <Header></Header>
       {access ? (
         <div>
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="createMenu">
               <label htmlFor="">Картинка URL:</label>
               <input
                 type="text"
@@ -64,7 +74,7 @@ export default function CreateMenu() {
                 onChange={(e) => updateField("img", e.target.value)}
               />
             </div>
-            <div>
+            <div className="createMenu">
               <label htmlFor="">Название:</label>
               <input
                 type="text"
@@ -72,15 +82,16 @@ export default function CreateMenu() {
                 onChange={(e) => updateField("title", e.target.value)}
               />
             </div>
-            <div>
+            <div className="createMenu">
               <label htmlFor="">Описание:</label>
-              <input
+              <textarea
                 type="text"
                 value={editedItem.description}
                 onChange={(e) => updateField("description", e.target.value)}
+                style={{ height: "100px", width: "30%" }}
               />
             </div>
-            <div>
+            <div className="createMenu">
               <label htmlFor="">Цена:</label>
               <input
                 type="number"
@@ -88,7 +99,7 @@ export default function CreateMenu() {
                 onChange={(e) => updateField("price", e.target.value)}
               />
             </div>
-            <div>
+            <div className="createMenu">
               <label htmlFor="">Категория:</label>
               <select
                 id="category"
@@ -103,7 +114,7 @@ export default function CreateMenu() {
                 <option value="drinks">Напитки</option>
               </select>
             </div>
-            <div>
+            <div className="createMenu">
               <label htmlFor="">Наличие:</label>
               <input
                 type="checkbox"
@@ -111,7 +122,7 @@ export default function CreateMenu() {
                 onChange={(e) => updateField("visible", e.target.checked)}
               />{" "}
             </div>
-            <div>
+            <div className="createMenu">
               <label>Вес:</label>
               <input
                 type="number"
@@ -119,7 +130,7 @@ export default function CreateMenu() {
                 onChange={(e) => updateField("weight", e.target.value)}
               />
             </div>
-            <div>
+            <div className="createMenu">
               <button
                 style={{ background: "white", color: "black" }}
                 type="submit"

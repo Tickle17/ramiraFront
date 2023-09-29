@@ -1,15 +1,15 @@
 import React, { useRef } from "react";
 import { Grid } from "@mui/material";
-import NavMenu from "../../../features/navMenu/navMenu";
+import NavMenu from "../../features/navMenu/navMenu";
 import "./style.css";
-import BodyMenu from "./bodyMenu";
-import NavBurger from "../../../features/navMenu/navBurger/navBurger";
+import BodyMenu from "./menuPage/bodyMenu";
+import NavBurger from "../../features/navMenu/navBurger/navBurger";
 import { useDispatch, useSelector } from "react-redux";
 import {
   closeMenuBurger,
   openMenuBurger,
   selectIsBurgerOpen,
-} from "../../../features/navMenu/navBurger/navBurgerSlice";
+} from "../../features/navMenu/navBurger/navBurgerSlice";
 import { useMediaQuery } from "@mui/material";
 
 export default function Body() {

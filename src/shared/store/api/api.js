@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // Определите URL вашего сервера
-const baseUrl = "http://localhost:5001/";
+const baseUrl = "https://dornetshop.ru/";
 
 const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
@@ -16,8 +16,19 @@ const api = createApi({
         body: editedItem,
       }),
     }),
+    sendOrder: builder.mutation({
+      query: (orderData) => ({
+        url: "tlg/sendMessage", // Укажите путь для отправки заказа
+        method: "POST",
+        body: orderData,
+      }),
+    }),
   }),
 });
 
-export const { useGetItemsQuery, useSaveMenuDataMutation } = api;
+export const {
+  useGetItemsQuery,
+  useSaveMenuDataMutation,
+  useSendOrderMutation,
+} = api;
 export default api;

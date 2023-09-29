@@ -4,7 +4,7 @@ import Header from "../header/header";
 import TextField from "@mui/material/TextField";
 import "./style.css";
 import axios from "axios";
-import { useGetItemsQuery } from "../../shared/store/api/bodyMenu/getBodyMenuApi/getBodyMenuApi";
+import { useGetItemsQuery } from "../../shared/store/api/api";
 import ChangeMenu from "./changeCreateMenu/changeMenu";
 import { NavLink } from "react-router-dom";
 
@@ -22,13 +22,12 @@ export default function LoginPage() {
   const authorization = async () => {
     try {
       // Выполняем POST-запрос на сервер
-      const response = await axios.post("http://localhost:5001/auth/auth", {
+      const response = await axios.post("https://dornetshop.ru/auth/auth", {
         login: login,
         password: password,
       });
       if (response.status === 200) {
         const token = response.data.message;
-        console.log(token);
         localStorage.setItem("token", token);
       }
     } catch (error) {

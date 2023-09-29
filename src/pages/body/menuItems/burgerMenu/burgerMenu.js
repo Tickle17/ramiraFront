@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import "./style.css";
-import BuyButton from "../../../../../shared/ui/buyButton/buyButton";
+import BuyButton from "../../../../shared/ui/buyButton/buyButton";
 
 function BurgerMenu(props) {
   return (
@@ -31,7 +31,7 @@ function BurgerMenu(props) {
                 </Grid>
                 {item.description && item.description !== "" && (
                   <Grid className="menuDescription" item xs={12}>
-                    {item.description}
+                    <div>{item.description}</div>
                   </Grid>
                 )}
                 {item.weight && item.weight !== "" && (

@@ -1,0 +1,68 @@
+.bgMenu{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    animation: fadeIn 0.3s ease-in-out;
+    overflow-y: auto;
+}
+.sidebar {
+    font-size:21px;
+    font-weight: 300;
+    position: fixed;
+    top: 0;
+    right: -300px; /* Сдвигаем меню за пределы экрана справа */
+    width: 300px; /* Ширина меню */
+    height: 100%;
+    background-color: #000000;
+    color: #fff;
+    transition: right 0.3s ease-in-out; /* Анимация сдвига вправо */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 6;
+}
+
+.sidebar.open {
+    right: 0; /* Открываем меню, сдвигая его вправо */
+}
+
+.close-button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+.content {
+    flex: 1;
+}
+
+h1 {
+    text-align: center;
+}
+
+.sidebar span{
+    border-bottom: 2px solid transparent;
+
+}
+.sidebar span:hover{
+    color: #ff7b00;
+    transition: 0.4s;
+    border-bottom: 2px solid #ff7b00;
+    cursor: pointer;
+}

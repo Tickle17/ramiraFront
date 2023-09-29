@@ -1,24 +1,28 @@
-// cartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const basketSlice = createSlice({
   name: "basket",
   initialState: {
-    items: [],
+    basketItems: [],
+    clientData: {
+      Name: "",
+      Phone: "",
+      Address: "",
+      HouseNumber: "",
+      AppartNumber: "",
+      EntranceNum: "",
+      Comments: "",
+    },
   },
   reducers: {
     addToBasket: (state, action) => {
       state.items.push(action.payload);
     },
-    removeFromBasket: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
-    },
-    clearBasket: (state) => {
-      state.items = [];
+    addClientData: (state, action) => {
+      state.clientData = { ...state.clientData, ...action.payload };
     },
   },
 });
 
-export const { addToBasket, removeFromBasket, clearBasket } =
-  basketSlice.actions;
+export const { addToBasket, addClientData } = basketSlice.actions;
 export default basketSlice.reducer;

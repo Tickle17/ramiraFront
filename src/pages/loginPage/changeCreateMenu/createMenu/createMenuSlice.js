@@ -1,6 +1,4 @@
-// getBodyMenuApi.js
 import { createSlice } from "@reduxjs/toolkit";
-import { CreateItemApi } from "../../../../shared/store/api/createItemApi/createItemApi";
 
 const menuSlice = createSlice({
   name: "menu",
@@ -25,5 +23,3 @@ const menuSlice = createSlice({
 export const { updateEditedItem } = menuSlice.actions;
 
 export default menuSlice.reducer;
-
-export const { useSaveMenuDataMutation } = CreateItemApi;

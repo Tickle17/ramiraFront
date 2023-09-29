@@ -23,10 +23,9 @@ export default function ChangeMenu(props) {
 
     try {
       const response = await axios.post(
-        `http://localhost:5001/menu/updateMenuItem`,
+        `https://dornetshop.ru/menu/updateMenuItem`,
         editedItem
       );
-      // console.log(editedItem);
       if (response.status === 200) {
         alert("Данные успешно сохранены!");
       }

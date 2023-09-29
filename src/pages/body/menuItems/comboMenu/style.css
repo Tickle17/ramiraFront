@@ -20,9 +20,12 @@
     font-size: 25px;
 
 }
-.menuDescription{
+.menuDescription div{
+    margin: 0 auto;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 12px;
+    max-width: 80%;
+    line-height:20px
 }
 
 .titlePositions{
@@ -33,7 +36,7 @@
     padding: 40px 0px;
 }
 /*modal*/
-/* CSS для модального окна */
+
 .modal {
     display: block;
     position: fixed;

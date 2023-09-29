@@ -1,0 +1,22 @@
+.nav{
+    padding:15px;
+    background-color: black;
+    text-transform: uppercase;
+}
+.navItems{
+    font-size: 20px;
+    margin: 0 auto;
+    width: 1060px;
+    display:flex;
+    justify-content: space-evenly;
+}
+.nav li{
+    border-bottom: 2px solid transparent;
+
+}
+.nav li:hover{
+    color: #ff7b00;
+    transition: 0.2s;
+    border-bottom: 2px solid #ff7b00;
+    cursor: pointer;
+}

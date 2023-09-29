@@ -13,7 +13,6 @@ export default function ModalMenu(props) {
   const delCount = () => {
     setCountItems(countItems - 1);
   };
-  // const [currentItem, setCurrentItem] = useState([]);
   const handleAddToCart = () => {
     const localData = JSON.parse(localStorage.getItem("basket")) || [];
     const currentItem = { ...props.selectedProduct, count: countItems };
@@ -29,13 +28,14 @@ export default function ModalMenu(props) {
   };
 
   return (
-    <div className="modal" onClick={props.closeModal}>
+    <div id="modal" className="modal" onClick={props.closeModalHandler}>
+      >
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <span className="close" onClick={props.closeModal}>
+        <span className="close" onClick={props.closeModalHandler}>
           &times;
         </span>
         {props.selectedProduct && (
-          <Grid container>
+          <Grid container spacing={2}>
             <Grid item xs={6}>
               <img src={props.selectedProduct.img} alt="" />
             </Grid>
@@ -59,9 +59,9 @@ export default function ModalMenu(props) {
                       <img src={plus} alt="plus" />
                     </Grid>
                   </Grid>
-                  <Grid item xs={5}>
+                  <Grid item xs={5} onClick={handleAddToCart}>
                     <BuyButton
-                      buy={handleAddToCart}
+                      close={props.closeModalHandler}
                       visible={props.selectedProduct.visible}
                     ></BuyButton>
                   </Grid>

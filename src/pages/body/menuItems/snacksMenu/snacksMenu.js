@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Grid } from "@mui/material";
-import BuyButton from "../../../../../shared/ui/buyButton/buyButton";
+import BuyButton from "../../../../shared/ui/buyButton/buyButton";
 
 export default function SnacksMenu(props) {
   return (
@@ -30,7 +30,7 @@ export default function SnacksMenu(props) {
                   {item.title}
                 </Grid>
                 <Grid className="menuDescription" item xs={12}>
-                  {item.description}
+                  <div>{item.description}</div>
                 </Grid>
                 <Grid className="menuDescription" item xs={12}>
                   {item.weight && `${item.weight} гр`}

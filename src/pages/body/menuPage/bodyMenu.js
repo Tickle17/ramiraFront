@@ -1,12 +1,12 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import { useGetItemsQuery } from "../../../shared/store/api/bodyMenu/getBodyMenuApi/getBodyMenuApi";
-import BurgerMenu from "./menuItems/burgerMenu/burgerMenu";
-import ComboMenu from "./menuItems/comboMenu/comboMenu";
-import SandvichMenu from "./menuItems/sandvichMenu/sandvichMenu";
-import SnacksMenu from "./menuItems/snacksMenu/snacksMenu";
-import SalatMenu from "./menuItems/salatMenu/salatMenu";
-import DrinksMenu from "./menuItems/drinksMenu/drinksMenu";
+import { useGetItemsQuery } from "../../../shared/store/api/api";
+import BurgerMenu from "../menuItems/burgerMenu/burgerMenu";
+import ComboMenu from "../menuItems/comboMenu/comboMenu";
+import SandvichMenu from "../menuItems/sandvichMenu/sandvichMenu";
+import SnacksMenu from "../menuItems/snacksMenu/snacksMenu";
+import SalatMenu from "../menuItems/salatMenu/salatMenu";
+import DrinksMenu from "../menuItems/drinksMenu/drinksMenu";
 import ModalMenu from "../../../features/modalMenu/modalMenu";
 import {
   openModal,

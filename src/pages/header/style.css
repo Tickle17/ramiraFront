@@ -1,0 +1,12 @@
+.header{
+    font-size:47px;
+    position: sticky;
+    top: 0px;
+    background-color:black;
+    z-index: 2;
+}
+.header .title{
+    padding: 10px 0px;
+    text-align:center;
+    text-transform:uppercase;
+}
