@@ -1,0 +1,20 @@
+.bodyContent{
+    margin: 0 auto;
+}
+.bodyBG{
+    display: flex;
+    position: relative;
+    height: 90vh;
+    font-size:72px;
+    text-align: center;
+    margin: 0 auto;
+}
+.bodyBG .title {
+    font-size:72px;
+    margin: auto;
+}
+.bodyBG .title p{
+    margin: 40px 0px 0px 0px;
+    font-size:25px;
+    font-weight: 300;
+}
