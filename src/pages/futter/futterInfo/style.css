@@ -1,0 +1,41 @@
+.futterInfoWrapper{
+    padding: 60px 0px;
+}
+.bgInst{
+    width: 75px;
+    height: 75px;
+    background: white;
+    border-radius: 100%;
+    opacity: 0.9;
+}
+.spacing{
+    width: 20px;
+}
+.futterTitle {
+    font-weight: 600;
+    font-size: 52px;
+    line-height:64px
+}
+
+.futterPhone {
+    font-weight: 300;
+    font-size: 20px;
+    line-height:31px;
+    opacity:0.7
+}
+
+.futterMail {
+    font-weight: 300;
+    font-size: 20px;
+    line-height:31px;
+    opacity:0.7
+
+}
+
+.futterAddress {
+    font-weight: 300;
+    font-size: 15px;
+    line-height:23px;
+    opacity:0.7
+
+}

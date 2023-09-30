@@ -55,9 +55,11 @@ export default function LoginPage() {
     <Grid>
       <Header></Header>
       {access ? (
-        <Grid>
+        <Grid container>
           {data.menus.map((item) => (
-            <ChangeMenu item={item}></ChangeMenu>
+            <Grid item xs={4}>
+              <ChangeMenu item={item}></ChangeMenu>
+            </Grid>
           ))}
         </Grid>
       ) : (

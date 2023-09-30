@@ -1,22 +1,17 @@
 import React from "react";
-import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+import YandexMap from "./yandexMap/YandexMap";
+import FutterInfo from "./futterInfo/futterInfo";
 import "./style.css";
-export default function Futter() {
+
+export default function Futter(props) {
   return (
-    <div className="yandexMap">
-      <YMaps query={{ apikey: "dfa847d6-9e7f-4092-a9ef-2b0131bed41d" }}>
-        <Map
-          defaultState={{
-            center: [55.76, 37.64],
-            zoom: 10,
-          }}
-          width={"100%"}
-          height={500}
-          options={{ suppressMapOpenBlock: true }}
-        >
-          <Placemark defaultGeometry={[55.751574, 37.573856]} />
-        </Map>
-      </YMaps>
+    <div>
+      <YandexMap props={props}></YandexMap>
+      <FutterInfo props={props}></FutterInfo>
+      <div className="createInfo">
+        © Ramira 2023 - All rights reserved ||
+        <a href="https://t.me/tickle17">Designed By: Tickle</a>
+      </div>
     </div>
   );
 }

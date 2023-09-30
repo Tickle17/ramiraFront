@@ -8,7 +8,7 @@ export default function ComboMenu(props) {
     <Grid ref={props.props.comboRef}>
       <Grid item xs={12} className="titlePositions">
         <p> Комбо</p>
-        <Grid container className="menuItems">
+        <Grid container rowSpacing={10} className="menuItems">
           {props.data.menus
             .filter((item) => item.category === "combo") //change cantegory for change items
             .map((item, index) => (

@@ -8,7 +8,7 @@ export default function SnacksMenu(props) {
     <Grid ref={props.props.snacksRef}>
       <Grid item xs={12} className="titlePositions">
         <p> Закуски </p>
-        <Grid container className="menuItems">
+        <Grid container rowSpacing={10} className="menuItems">
           {props.data.menus
             .filter((item) => item.category === "snacks") //change cantegory for change items
             .map((item, index) => (

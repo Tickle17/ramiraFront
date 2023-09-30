@@ -8,7 +8,7 @@ export default function DrinksMenu(props) {
     <Grid>
       <Grid item xs={12} className="titlePositions">
         <p> Напитки </p>
-        <Grid container className="menuItems">
+        <Grid container rowSpacing={10} className="menuItems">
           {props.data.menus
             .filter((item) => item.category === "drinks") //change cantegory for change items
             .map((item, index) => (

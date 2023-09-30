@@ -11,6 +11,7 @@ import {
   selectIsBurgerOpen,
 } from "../../features/navMenu/navBurger/navBurgerSlice";
 import { useMediaQuery } from "@mui/material";
+import Futter from "../futter/futter";
 
 export default function Body() {
   const comboRef = useRef(null);
@@ -74,11 +75,12 @@ export default function Body() {
 
       <Grid className="bodyBG">
         <Grid className="title">
-          Вкуснейшие бургеры и сэндвичи
+          <div> Вкуснейшие бургеры и сэндвичи</div>
           <p>C доставкой от 40 минут в Волгограде</p>
         </Grid>
       </Grid>
       <BodyMenu {...refsProps}></BodyMenu>
+      <Futter {...refsProps}></Futter>
     </Grid>
   );
 }

@@ -1,9 +1,7 @@
 import "./App.css";
 import Header from "../pages/header/header";
-// import Futter from "../pages/futter/futter";
 import Body from "../pages/body/body";
 import React from "react";
-import Futter from "../pages/futter/futter";
 
 function App() {
   return (
@@ -12,7 +10,6 @@ function App() {
       <Header></Header>
       <div className="bodyContent">
         <Body></Body>
-        <Futter></Futter>
       </div>
     </div>
   );

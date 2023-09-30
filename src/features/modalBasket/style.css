@@ -13,10 +13,8 @@
 .modalContent {
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
-    /*position: absolute;*/
     top: 50%;
     left: 50%;
-    /*transform: translate(-50%, -50%);*/
     padding: 40px;
     border-radius: 10px;
     color: black;

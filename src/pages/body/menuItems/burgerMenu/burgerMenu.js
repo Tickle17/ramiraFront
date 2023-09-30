@@ -8,7 +8,7 @@ function BurgerMenu(props) {
     <Grid ref={props.props.burgerRef}>
       <Grid item xs={12} className="titlePositions">
         <p> Бургеры</p>
-        <Grid container className="menuItems">
+        <Grid container rowSpacing={10} className="menuItems">
           {props.data.menus
             .filter((item) => item.category === "burgers") //change cantegory for change items
             .map((item, index) => (
@@ -18,7 +18,7 @@ function BurgerMenu(props) {
                 sm={6}
                 md={4}
                 container
-                spacing={2}
+                spacing={1}
                 className="menuItem"
                 key={index}
                 onClick={() => props.openModalHandler(item)}

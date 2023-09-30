@@ -50,7 +50,7 @@ export default function NavMenu(props) {
         </li>
         <li
           onClick={() => {
-            props.scrollToSection(props.comboRef);
+            props.scrollToSection(props.contactRef);
           }}
         >
           Контакты
