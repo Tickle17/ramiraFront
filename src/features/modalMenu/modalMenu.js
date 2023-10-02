@@ -11,7 +11,9 @@ export default function ModalMenu(props) {
     setCountItems(countItems + 1);
   };
   const delCount = () => {
-    setCountItems(countItems - 1);
+    if (countItems > 1) {
+      setCountItems(countItems - 1);
+    }
   };
   const handleAddToCart = () => {
     const localData = JSON.parse(localStorage.getItem("basket")) || [];
