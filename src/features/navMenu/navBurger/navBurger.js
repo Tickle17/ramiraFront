@@ -60,7 +60,7 @@ export default function NavBurger(props) {
           </li>
           <li
             onClick={() => {
-              props.scrollToSection(props.comboRef);
+              props.scrollToSection(props.contactRef);
               props.closeBurger();
             }}
           >

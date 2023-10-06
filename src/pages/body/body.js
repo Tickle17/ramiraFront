@@ -26,7 +26,6 @@ export default function Body() {
   const isBurgerOpen = useSelector(selectIsBurgerOpen);
   const dispatch = useDispatch();
 
-  // Проверяем, соответствует ли текущий размер экрана медиа-запросу
   const isSmallScreen = useMediaQuery("(max-width: 1000px)");
 
   const openBurger = () => {
@@ -66,10 +65,15 @@ export default function Body() {
   return (
     <Grid>
       {isSmallScreen ? (
-        <NavBurger {...menuBurgerProps} {...refsProps}></NavBurger>
+        <Grid>
+          <NavBurger {...menuBurgerProps} {...refsProps}></NavBurger>
+        </Grid>
       ) : (
-        <Grid container>
-          <NavMenu {...refsProps}></NavMenu>
+        <Grid>
+          <NavBurger {...menuBurgerProps} {...refsProps}></NavBurger>
+          <Grid container>
+            <NavMenu {...refsProps}></NavMenu>
+          </Grid>
         </Grid>
       )}
 

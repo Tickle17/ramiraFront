@@ -48,7 +48,19 @@ export default function ModalBasket(props) {
     <div id="modalBasket" className="modalBasket" onClick={handleModalClick}>
       <Grid className="modalContent">
         <Stack>
-          <Grid className="titleBasketModal">Ваш заказ:</Grid>
+          <Grid container alignItems="center">
+            <Grid item xs={11}>
+              <Grid className="titleBasketModal">Ваш заказ:</Grid>
+            </Grid>
+            <Grid item xs={1}>
+              <span
+                style={{ cursor: "pointer", fontSize: "30px" }}
+                onClick={props.closeModalHandler}
+              >
+                &times;
+              </span>
+            </Grid>
+          </Grid>
           <Grid className="menuData">
             {basketItems.map((item, index) => (
               <Grid

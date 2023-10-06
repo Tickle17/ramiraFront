@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./pages/loginPage/loginPage";
 import store from "./shared/store/store";
 import CreateMenu from "./pages/loginPage/changeCreateMenu/createMenu/createMenu";
+
 const router = createBrowserRouter([
   {
     path: "/",

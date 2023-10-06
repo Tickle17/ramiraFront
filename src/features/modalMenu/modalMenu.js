@@ -61,8 +61,9 @@ export default function ModalMenu(props) {
                       <img src={plus} alt="plus" />
                     </Grid>
                   </Grid>
-                  <Grid item xs={5} onClick={handleAddToCart}>
+                  <Grid item xs={5}>
                     <BuyButton
+                      onClick={handleAddToCart}
                       close={props.closeModalHandler}
                       visible={props.selectedProduct.visible}
                     ></BuyButton>
