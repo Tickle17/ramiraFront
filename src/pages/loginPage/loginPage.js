@@ -6,12 +6,8 @@ import "./style.css";
 import axios from "axios";
 import { useGetItemsQuery } from "../../shared/store/api/api";
 import ChangeMenu from "./changeCreateMenu/changeMenu";
-import {
-  selectIsAuthenticated,
-  setAuthenticated,
-  setUnauthenticated,
-} from "../../features/authSlice/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { selectIsAuthenticated } from "../../features/authSlice/authSlice";
+import { useSelector } from "react-redux";
 
 export default function LoginPage() {
   const [login, setLogin] = useState("");
@@ -23,19 +19,6 @@ export default function LoginPage() {
     setPassword(event.target.value);
   };
 
-  const checkTokenAndSetAuthStatus = (token) => (dispatch) => {
-    if (
-      token ===
-      "98bd5806929b8e6cadd4ffd3d79afa893c3e30f43d934481bd3f37273689edb2"
-    ) {
-      dispatch(setAuthenticated());
-    } else {
-      dispatch(setUnauthenticated());
-    }
-  };
-  const dispatch = useDispatch();
-  const token = localStorage.getItem("token");
-  dispatch(checkTokenAndSetAuthStatus(token));
   const authorization = async () => {
     try {
       // Выполняем POST-запрос на сервер
