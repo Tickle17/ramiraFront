@@ -6,8 +6,11 @@ import "./style.css";
 import axios from "axios";
 import { useGetItemsQuery } from "../../shared/store/api/api";
 import ChangeMenu from "./changeCreateMenu/changeMenu";
-import { selectIsAuthenticated } from "../../features/authSlice/authSlice";
-import { useSelector } from "react-redux";
+import {
+  selectIsAuthenticated,
+  setAuthenticated,
+} from "../../features/authSlice/authSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function LoginPage() {
   const [login, setLogin] = useState("");
@@ -18,7 +21,7 @@ export default function LoginPage() {
   const changePassword = (event) => {
     setPassword(event.target.value);
   };
-
+  const dispatch = useDispatch();
   const authorization = async () => {
     try {
       // Выполняем POST-запрос на сервер
@@ -29,6 +32,8 @@ export default function LoginPage() {
       if (response.status === 200) {
         const token = response.data.message;
         localStorage.setItem("token", token);
+        dispatch(setAuthenticated());
+        window.location.reload();
       }
     } catch (error) {
       console.error("Ошибка при выполнении POST-запроса:", error);
