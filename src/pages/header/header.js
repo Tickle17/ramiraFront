@@ -59,18 +59,19 @@ export default function Header() {
           <Grid item xs={4} className="title">
             <a href="/">Ramira</a>
           </Grid>
-          <Grid item xs={4}></Grid>
+          <Grid item xs={5}></Grid>
           <Grid container item xs={3} style={{ alignItems: "center" }}>
-            <Grid container justifyContent="flex-end" item xs={6}>
+            <Grid container justifyContent="flex-end" item xs={5}>
               <button onClick={openModalHandler}>
                 <Basket></Basket>
               </button>
             </Grid>
-            <Grid container justifyContent="flex-end" item xs={6}>
+            <Grid container justifyContent="flex-end" item xs={5}>
               <button onClick={openBurger}>
                 <FaBars />
               </button>
             </Grid>
+            <Grid item xs={2}></Grid>
           </Grid>
         </Grid>
       ) : (
@@ -106,7 +107,6 @@ export default function Header() {
                       <Profile></Profile>
                     </NavLink>
                   </Grid>
-
                   <Grid
                     container
                     item
@@ -139,7 +139,6 @@ export default function Header() {
                 </Grid>
               )}
             </Grid>
-            <Grid container item xs={1}></Grid>
           </Grid>
         </Grid>
       )}

@@ -49,6 +49,9 @@
 }
 .infoModal{
     text-align: left;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
 }
 .titleModal{
     line-height:32px;
