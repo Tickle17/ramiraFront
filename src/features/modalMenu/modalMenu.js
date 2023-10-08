@@ -45,20 +45,31 @@ export default function ModalMenu(props) {
         {isSmallScreen
           ? props.selectedProduct && (
               <Grid container>
-                <Grid container spacing={2} className="infoModal">
+                <Grid
+                  container
+                  rowSpacing={2}
+                  spacing={2}
+                  className="infoModal"
+                >
                   <Grid item xs={4}>
                     <img src={props.selectedProduct.img} alt="" />
                   </Grid>
                   <Grid item xs={6}>
-                    <Grid className="titleModal">
+                    <Grid className="titleModal" item>
                       {props.selectedProduct.title}
                     </Grid>
 
-                    <Grid>{props.selectedProduct.price} р.</Grid>
+                    <Grid item>{props.selectedProduct.price} р.</Grid>
 
-                    <Grid item xs={6} container className="countMenu">
+                    <Grid
+                      style={{ margin: "10px 0px" }}
+                      item
+                      xs={12}
+                      container
+                      className="countMenu"
+                    >
                       <Grid item xs={6} container className="countItems">
-                        <Grid item xs={6} onClick={delCount}>
+                        <Grid item xs={4} onClick={delCount}>
                           <img src={minus} alt="minus" />
                         </Grid>
                         <Grid item xs={4}>
@@ -68,7 +79,7 @@ export default function ModalMenu(props) {
                           <img src={plus} alt="plus" />
                         </Grid>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={5}>
                         <BuyButton
                           buyItem={handleAddToCart}
                           close={props.closeModalHandler}
