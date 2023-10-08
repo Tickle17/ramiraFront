@@ -41,14 +41,15 @@ export default function ModalMenu(props) {
         <span className="close" onClick={props.closeModalHandler}>
           &times;
         </span>
+
         {isSmallScreen
           ? props.selectedProduct && (
-              <Grid container spacing={2}>
-                <Grid className="infoModal">
-                  <Grid item>
+              <Grid container>
+                <Grid container spacing={2} className="infoModal">
+                  <Grid item xs={4}>
                     <img src={props.selectedProduct.img} alt="" />
                   </Grid>
-                  <Stack spacing={4}>
+                  <Grid item xs={6}>
                     <Grid className="titleModal">
                       {props.selectedProduct.title}
                     </Grid>
@@ -75,10 +76,10 @@ export default function ModalMenu(props) {
                         ></BuyButton>
                       </Grid>
                     </Grid>
-                    <Grid className="itemDescription">
-                      {props.selectedProduct.description}
-                    </Grid>
-                  </Stack>
+                  </Grid>
+                  <Grid className="itemDescription" item xs={12}>
+                    {props.selectedProduct.description}
+                  </Grid>
                 </Grid>
               </Grid>
             )

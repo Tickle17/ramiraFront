@@ -2,8 +2,11 @@ import React from "react";
 import "./style.css";
 export default function BuyButton(props) {
   const addToBasket = () => {
-    props.buyItem(); // Вызов первой функции
-    props.close(); // Вызов второй функции
+    if (props.visible === false) {
+      props.close();
+      return;
+    } else props.buyItem();
+    props.close();
   };
   return (
     <button
