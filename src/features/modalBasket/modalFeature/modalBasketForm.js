@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Stack } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addClientData, clearBasket } from "../basketSlice/basketSlice";
 import { useSendOrderMutation } from "../../../shared/store/api/api";
@@ -13,6 +13,7 @@ export default function ModalBasketForm(props) {
 
   useEffect(() => {
     if (
+      globalStateData.basketItems.length > 0 &&
       globalStateData.clientData.Name &&
       globalStateData.clientData.Phone &&
       globalStateData.clientData.Address &&
@@ -23,6 +24,7 @@ export default function ModalBasketForm(props) {
       setIsFormValid(false);
     }
   }, [
+    globalStateData.basketItems.length,
     globalStateData.clientData.Name,
     globalStateData.clientData.Phone,
     globalStateData.clientData.Address,
@@ -162,8 +164,11 @@ export default function ModalBasketForm(props) {
             }
           />
         </Stack>
-        <button type="submit">
-          {isLoading ? "Отправка заказа..." : "Отправить данные"}
+        <Grid className="totalPrice_info2">
+          <div>Сумма: {props.totalAmount} р.</div>
+        </Grid>
+        <button className="sendOrderButton" type="submit">
+          {isLoading ? "Отправка заказа..." : "Оформить заказ"}
         </button>
       </form>
     </Stack>
