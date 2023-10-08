@@ -6,10 +6,7 @@ import "./style.css";
 import axios from "axios";
 import { useGetItemsQuery } from "../../shared/store/api/api";
 import ChangeMenu from "./changeCreateMenu/changeMenu";
-import {
-  selectIsAuthenticated,
-  setAuthenticated,
-} from "../../features/authSlice/authSlice";
+import { selectIsAuthenticated, setAuthenticated } from "./authSlice/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function LoginPage() {
@@ -24,7 +21,6 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const authorization = async () => {
     try {
-      // Выполняем POST-запрос на сервер
       const response = await axios.post("https://dornetshop.ru/auth/auth", {
         login: login,
         password: password,

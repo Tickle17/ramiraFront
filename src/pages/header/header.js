@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { ReactComponent as BurgerMenu } from "../../shared/img/burgerMenu.svg";
 import { ReactComponent as Profile } from "../../shared/img/profile.svg";
 import { ReactComponent as Plus } from "../../shared/img/createNewItem.svg";
-
-import basket from "../../shared/img/basket.png";
+import { ReactComponent as Basket } from "../../shared/img/basket.svg";
 import "./style.css";
 import { NavLink } from "react-router-dom";
 import ModalBasket from "../../features/modalBasket/modalBasket";
@@ -16,7 +15,8 @@ import {
 } from "../../features/modalBasket/modalBasketSlice";
 import { Grid, useMediaQuery } from "@mui/material";
 import { openMenuBurger } from "../../features/navMenu/navBurger/navBurgerSlice";
-import { selectIsAuthenticated } from "../../features/authSlice/authSlice";
+import { selectIsAuthenticated } from "../loginPage/authSlice/authSlice";
+import { selectIsBasketEmpty } from "../../features/modalBasket/basketSlice/basketSlice";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -43,7 +43,15 @@ export default function Header() {
   };
 
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const isBasketEmpty = useSelector(selectIsBasketEmpty);
+  useEffect(() => {
+    const redDot = document.querySelector(".red-dot");
 
+    if (isBasketEmpty) {
+      redDot.style.display = "none";
+    } else redDot.style.display = "block";
+    console.log(isBasketEmpty);
+  }, [isBasketEmpty]);
   return (
     <Grid container className="header">
       {isSmallScreen ? (
@@ -55,7 +63,7 @@ export default function Header() {
           <Grid container item xs={3} style={{ alignItems: "center" }}>
             <Grid container justifyContent="flex-end" item xs={6}>
               <button onClick={openModalHandler}>
-                <img src={basket} alt="" />
+                <Basket></Basket>
               </button>
             </Grid>
             <Grid container justifyContent="flex-end" item xs={6}>
@@ -78,22 +86,22 @@ export default function Header() {
             justifyContent="flex-end"
             style={{ alignItems: "center" }}
           >
-            <Grid container item xs={7}></Grid>
+            <Grid container item xs={6}></Grid>
             <Grid
               container
               justifyContent="space-between"
               alignItems="center"
               item
-              xs={4}
+              xs={5}
             >
               {isAuthenticated ? (
-                <Grid container>
-                  <Grid container item xs={2}>
+                <Grid container alignItems="center">
+                  <Grid container item xs={3}>
                     <NavLink to="/login/create">
                       <Plus></Plus>
                     </NavLink>
                   </Grid>
-                  <Grid container item xs={2} alignItems="center">
+                  <Grid container item xs={3}>
                     <NavLink to="/login">
                       <Profile></Profile>
                     </NavLink>
@@ -102,16 +110,12 @@ export default function Header() {
                   <Grid
                     container
                     item
-                    xs={4}
+                    xs={3}
                     onClick={() => openModalHandler()}
                   >
-                    <img
-                      style={{ width: "48px", height: "48px" }}
-                      src={basket}
-                      alt="Корзина"
-                    />
+                    <Basket></Basket>
                   </Grid>
-                  <Grid container item xs={4}>
+                  <Grid container item xs={3}>
                     <button onClick={openBurger}>
                       <BurgerMenu></BurgerMenu>
                     </button>
@@ -125,11 +129,7 @@ export default function Header() {
                     xs={6}
                     onClick={() => openModalHandler()}
                   >
-                    <img
-                      style={{ width: "48px", height: "48px" }}
-                      src={basket}
-                      alt="Корзина"
-                    />
+                    <Basket></Basket>
                   </Grid>
                   <Grid container item xs={6}>
                     <button onClick={openBurger}>

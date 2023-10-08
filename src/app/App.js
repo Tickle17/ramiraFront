@@ -5,7 +5,7 @@ import React from "react";
 import {
   setAuthenticated,
   setUnauthenticated,
-} from "../features/authSlice/authSlice";
+} from "../pages/loginPage/authSlice/authSlice";
 import { useDispatch } from "react-redux";
 
 function App() {

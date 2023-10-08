@@ -11,8 +11,11 @@ import {
   getTotalPrice,
 } from "./modalFeature/modalFunc";
 import ModalBasketForm from "./modalFeature/modalBasketForm";
+import { useDispatch } from "react-redux";
+import { clearBasket } from "./basketSlice/basketSlice";
 export default function ModalBasket(props) {
   const [basketItems, setBasketItems] = useState([]);
+  const dispatch = useDispatch();
   const increaseItemCountHandler = (itemIndex) => {
     increaseItemCount(basketItems, itemIndex, setBasketItems);
   };
@@ -23,6 +26,10 @@ export default function ModalBasket(props) {
 
   const removeItemHandler = (itemIndex) => {
     removeItem(basketItems, itemIndex, setBasketItems);
+    console.log(basketItems);
+    if (basketItems.length <= 1) {
+      dispatch(clearBasket());
+    }
   };
 
   const totalAmount = getTotalPrice(basketItems);

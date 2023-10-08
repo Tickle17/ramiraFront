@@ -23,6 +23,13 @@ const api = createApi({
         body: orderData,
       }),
     }),
+    delMenuItem: builder.mutation({
+      query: (idItem) => ({
+        url: "menu/deleteMenuItem",
+        method: "POST",
+        body: idItem,
+      }),
+    }),
   }),
 });
 
@@ -30,5 +37,6 @@ export const {
   useGetItemsQuery,
   useSaveMenuDataMutation,
   useSendOrderMutation,
+  useDelMenuItemMutation,
 } = api;
 export default api;

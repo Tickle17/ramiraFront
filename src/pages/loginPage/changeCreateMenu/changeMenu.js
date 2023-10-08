@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Grid, Stack } from "@mui/material";
 import axios from "axios";
 import "./style.css";
+import { useDelMenuItemMutation } from "../../../shared/store/api/api";
 
 export default function ChangeMenu(props) {
   const [editing, setEditing] = useState(false);
@@ -18,7 +19,7 @@ export default function ChangeMenu(props) {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const editItem = async (e) => {
     e.preventDefault();
 
     try {
@@ -33,11 +34,31 @@ export default function ChangeMenu(props) {
       console.error("Ошибка при сохранении данных:", error);
     }
   };
+  const [idItem] = useDelMenuItemMutation();
+
+  const delItem = async (e) => {
+    e.preventDefault();
+    try {
+      const result = window.confirm("Вы уверены, что хотите продолжить?");
+
+      if (result) {
+        const res = await idItem({ _id: props.item._id });
+        if (res.data.message === "completed") {
+          alert("Товар удален");
+          window.location.reload();
+        }
+      } else {
+        return;
+      }
+    } catch (error) {
+      console.error("Ошибка при сохранении данных:", error);
+    }
+  };
 
   return (
     <Grid className="changeItemMenu">
       {editing ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={editItem}>
           <Stack>
             <label>Изображение:</label>
             <input
@@ -132,6 +153,9 @@ export default function ChangeMenu(props) {
           ))}
           <Grid item xs={12}>
             <button onClick={changeEditing}> Редактировать</button>
+          </Grid>
+          <Grid item xs={12}>
+            <button onClick={delItem}> Удалить </button>
           </Grid>
         </Grid>
       )}

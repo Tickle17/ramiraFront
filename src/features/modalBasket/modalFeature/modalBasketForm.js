@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Stack } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { addClientData } from "../../basketRTK/basketRTK";
+import { addClientData, clearBasket } from "../basketSlice/basketSlice";
 import { useSendOrderMutation } from "../../../shared/store/api/api";
 
 export default function ModalBasketForm(props) {
   const dispatch = useDispatch();
-  const [orderData, setOrderData] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
   const globalStateData = useSelector((state) => state.basket);
   const [sendOrderTelegram, { isLoading, isError, isSuccess, data, error }] =
@@ -54,13 +53,12 @@ export default function ModalBasketForm(props) {
       "\n"
     )}\n\n${clientDetails}\n\nСумма заказа: ${props.totalAmount} р.`;
 
-    setOrderData(orderSummary);
-
     sendOrderTelegram({ orderData: orderSummary })
       .unwrap()
       .then((response) => {
         console.log("Заказ успешно отправлен:", response);
         localStorage.removeItem("basket");
+        dispatch(clearBasket());
       })
       .catch((err) => {
         console.error("Ошибка отправки заказа:", err);

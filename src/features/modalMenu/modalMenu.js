@@ -4,6 +4,8 @@ import "./style.css";
 import BuyButton from "../../shared/ui/buyButton/buyButton";
 import plus from "../../shared/img/add.png";
 import minus from "../../shared/img/minus.png";
+import { addToBasket } from "../modalBasket/basketSlice/basketSlice";
+import { useDispatch } from "react-redux";
 
 export default function ModalMenu(props) {
   const [countItems, setCountItems] = useState(1);
@@ -15,6 +17,7 @@ export default function ModalMenu(props) {
       setCountItems(countItems - 1);
     }
   };
+  const dispatch = useDispatch();
   const handleAddToCart = () => {
     const localData = JSON.parse(localStorage.getItem("basket")) || [];
     const currentItem = { ...props.selectedProduct, count: countItems };
@@ -27,6 +30,7 @@ export default function ModalMenu(props) {
       localData.push(currentItem);
     }
     localStorage.setItem("basket", JSON.stringify(localData));
+    dispatch(addToBasket(localData));
   };
 
   return (
@@ -63,7 +67,7 @@ export default function ModalMenu(props) {
                   </Grid>
                   <Grid item xs={5}>
                     <BuyButton
-                      onClick={handleAddToCart}
+                      buyItem={handleAddToCart}
                       close={props.closeModalHandler}
                       visible={props.selectedProduct.visible}
                     ></BuyButton>

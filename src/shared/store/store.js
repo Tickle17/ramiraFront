@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import api from "./api/api";
-import basketReducer from "../../features/basketRTK/basketRTK";
+import basketReducer from "../../features/modalBasket/basketSlice/basketSlice";
 import modalMenuSlice from "../../features/modalMenu/modalSlice";
 import modalBasketSlice from "../../features/modalBasket/modalBasketSlice";
 import navMenuBurgerSlice from "../../features/navMenu/navBurger/navBurgerSlice";
-import authSlice from "../../features/authSlice/authSlice";
+import authSlice from "../../pages/loginPage/authSlice/authSlice";
 import storage from "redux-persist/lib/storage";
 import {
   persistReducer,
@@ -20,7 +20,7 @@ import {
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth"],
+  whitelist: ["auth", "basket"],
 };
 const combineReducer = combineReducers({
   [api.reducerPath]: api.reducer,

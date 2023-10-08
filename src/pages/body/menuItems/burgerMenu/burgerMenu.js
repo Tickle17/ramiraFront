@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import "./style.css";
-import BuyButton from "../../../../shared/ui/buyButton/buyButton";
+import ShowModalButton from "../../../../shared/ui/shomModalMenuButton/showModalButton";
 
 function BurgerMenu(props) {
   return (
@@ -43,7 +43,7 @@ function BurgerMenu(props) {
                   {item.price} р.
                 </Grid>
                 <Grid item xs={12}>
-                  <BuyButton visible={item.visible}></BuyButton>
+                  <ShowModalButton visible={item.visible}></ShowModalButton>
                 </Grid>
               </Grid>
             ))}

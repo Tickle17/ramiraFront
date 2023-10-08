@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../../header/header";
 import { updateEditedItem } from "./createMenuSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@mui/material";
 import PreviewNewItem from "./previewNewItem";
 import "./style.css";
 import { useSaveMenuDataMutation } from "../../../../shared/store/api/api";
+import { selectIsAuthenticated } from "../../authSlice/authSlice";
 export default function CreateMenu() {
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
   const [editedItem, setEditedItem] = useState({
     img: "",
     title: "",
@@ -18,19 +20,7 @@ export default function CreateMenu() {
     weight: 0,
   });
 
-  const [access, setAccess] = useState(false);
-
   const [saveMenuData, { data, error, isLoading }] = useSaveMenuDataMutation();
-
-  useEffect(() => {
-    const localToken = localStorage.getItem("token");
-    if (
-      localToken ===
-      "98bd5806929b8e6cadd4ffd3d79afa893c3e30f43d934481bd3f37273689edb2"
-    ) {
-      setAccess(true);
-    }
-  }, []);
 
   const updateField = (field, value) => {
     setEditedItem({
@@ -39,7 +29,7 @@ export default function CreateMenu() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const createItem = async (e) => {
     e.preventDefault();
     try {
       const result = await saveMenuData(editedItem);
@@ -63,9 +53,9 @@ export default function CreateMenu() {
   return (
     <div>
       <Header></Header>
-      {access ? (
+      {isAuthenticated ? (
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={createItem}>
             <div className="createMenu">
               <label htmlFor="">Картинка URL:</label>
               <input
