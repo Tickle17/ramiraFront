@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import { Grid } from "@mui/material";
-import BuyButton from "../../../../shared/ui/buyButton/buyButton";
 import ShowModalButton from "../../../../shared/ui/shomModalMenuButton/showModalButton";
 
 export default function ComboMenu(props) {
@@ -15,7 +14,7 @@ export default function ComboMenu(props) {
             .map((item, index) => (
               <Grid
                 item
-                xs={12}
+                xs={6}
                 sm={6}
                 md={4}
                 container

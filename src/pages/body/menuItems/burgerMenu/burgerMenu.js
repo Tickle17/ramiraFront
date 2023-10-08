@@ -14,7 +14,7 @@ function BurgerMenu(props) {
             .map((item, index) => (
               <Grid
                 item
-                xs={12}
+                xs={6}
                 sm={6}
                 md={4}
                 container
