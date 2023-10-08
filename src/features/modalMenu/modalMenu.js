@@ -58,7 +58,7 @@ export default function ModalMenu(props) {
 
                     <Grid item xs={6} container className="countMenu">
                       <Grid item xs={6} container className="countItems">
-                        <Grid item xs={4} onClick={delCount}>
+                        <Grid item xs={6} onClick={delCount}>
                           <img src={minus} alt="minus" />
                         </Grid>
                         <Grid item xs={4}>
@@ -68,7 +68,7 @@ export default function ModalMenu(props) {
                           <img src={plus} alt="plus" />
                         </Grid>
                       </Grid>
-                      <Grid item xs={5}>
+                      <Grid item xs={6}>
                         <BuyButton
                           buyItem={handleAddToCart}
                           close={props.closeModalHandler}
