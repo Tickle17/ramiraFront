@@ -58,6 +58,11 @@
     font-size: 16px;
     font-weight: 600;
 }
+.menuDataRare{
+    font-size: 13px;
+    font-weight: 300;
+    opacity: 0.7
+}
 .userData{
     text-align: left;
     font-size: 16px;

@@ -107,4 +107,18 @@
         text-align: left;
         width: 50%;
     }
+    .chooseRare select{
+        background-color: white;
+        color: black;
+        border-radius: 2px;
+        margin-top: 15px;
+        font-weight: 300;
+    }
+}
+.chooseRare select{
+    background-color: white;
+    color: black;
+    border-radius: 2px;
+    margin-top: 15px;
+    font-weight: 300;
 }

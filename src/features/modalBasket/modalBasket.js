@@ -81,7 +81,8 @@ export default function ModalBasket(props) {
                 </Grid>
 
                 <Grid item xs={4} className="menuDataTitle">
-                  {item.title}
+                  <Grid> {item.title}</Grid>
+                  <Grid className="menuDataRare">{item.options}</Grid>
                 </Grid>
 
                 <Grid container item xs={2}>

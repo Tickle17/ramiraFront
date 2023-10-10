@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 
 export default function ModalMenu(props) {
   const [countItems, setCountItems] = useState(1);
+  const [rareItem, setRareItem] = useState("Medium");
+
   const addCount = () => {
     setCountItems(countItems + 1);
   };
@@ -17,12 +19,26 @@ export default function ModalMenu(props) {
       setCountItems(countItems - 1);
     }
   };
+  const handleRareChange = (event) => {
+    setRareItem(event.target.value);
+  };
   const dispatch = useDispatch();
   const handleAddToCart = () => {
     const localData = JSON.parse(localStorage.getItem("basket")) || [];
-    const currentItem = { ...props.selectedProduct, count: countItems };
+    let currentItem = {
+      ...props.selectedProduct,
+      count: countItems,
+    };
+
+    if (currentItem.category === "burgers") {
+      currentItem = {
+        ...currentItem,
+        options: rareItem,
+      };
+    }
     const existingItemIndex = localData.findIndex(
-      (item) => item._id === currentItem._id
+      (item) =>
+        item._id === currentItem._id && item.options === currentItem.options
     );
     if (existingItemIndex !== -1) {
       localData[existingItemIndex].count += currentItem.count;
@@ -50,11 +66,13 @@ export default function ModalMenu(props) {
                   rowSpacing={2}
                   spacing={2}
                   className="infoModal"
+                  item
+                  xs={12}
                 >
                   <Grid item xs={4}>
                     <img src={props.selectedProduct.img} alt="" />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={8}>
                     <Grid className="titleModal" item>
                       {props.selectedProduct.title}
                     </Grid>
@@ -87,7 +105,20 @@ export default function ModalMenu(props) {
                         ></BuyButton>
                       </Grid>
                     </Grid>
+                    {props.selectedProduct.category === "burgers" && (
+                      <Grid className="chooseRare">
+                        <select
+                          defaultValue="medium"
+                          onChange={handleRareChange}
+                        >
+                          <option value="rare">Rare</option>
+                          <option value="medium">Medium</option>
+                          <option value="well-done">Well-Done</option>
+                        </select>
+                      </Grid>
+                    )}
                   </Grid>
+
                   <Grid className="itemDescription" item xs={12}>
                     {props.selectedProduct.description}
                   </Grid>
@@ -126,6 +157,20 @@ export default function ModalMenu(props) {
                           visible={props.selectedProduct.visible}
                         ></BuyButton>
                       </Grid>
+                      {props.selectedProduct.category === "burgers" && (
+                        <Grid className="chooseRare">
+                          <form>
+                            <select
+                              defaultValue="medium"
+                              onChange={handleRareChange}
+                            >
+                              <option value="rare">Rare</option>
+                              <option value="medium">Medium</option>
+                              <option value="well-done">Well-Done</option>
+                            </select>
+                          </form>
+                        </Grid>
+                      )}
                     </Grid>
                     <Grid className="itemDescription">
                       {props.selectedProduct.description}

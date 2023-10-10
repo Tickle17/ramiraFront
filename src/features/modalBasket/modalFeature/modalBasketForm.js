@@ -39,7 +39,8 @@ export default function ModalBasketForm(props) {
 
     const orderDetails = props.basketItems.map((item) => {
       const totalPriceForPosition = item.count * item.price;
-      return `${item.title} - ${item.count} шт (${item.count} шт * ${item.price} = ${totalPriceForPosition})`;
+      const itemOptions = item.options ? ` ${item.options}` : "";
+      return `${item.title}${itemOptions} - ${item.count} шт (${item.count} шт * ${item.price} = ${totalPriceForPosition})`;
     });
 
     const clientDetails = `Адрес клиента:
